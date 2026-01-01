@@ -9,7 +9,7 @@ css = f"""
     /* Full-screen stretched background */
     .stApp {{
         background: url('{background_url}') no-repeat center center fixed;
-        background-size: 100% 100%;
+        background-size: cover;  /* Changed to 'cover' for better responsiveness */
         background-color: black;
         height: 100vh;
         margin: 0;
@@ -21,7 +21,7 @@ css = f"""
     header, footer, #MainMenu {{ visibility: hidden; }}
     [data-testid="stSidebar"] {{ display: none; }}
 
-    /* Clickable glowing ring base style */
+    /* Clickable glowing ring */
     .ring {{
         width: 260px;
         height: 260px;
@@ -40,7 +40,7 @@ css = f"""
         transform: translate(-50%, -50%) scale(1.2);
     }}
 
-    /* Owl - Purple (Reading Companion) */
+    /* Owl - Purple */
     #owl-ring {{
         border-color: #c084fc;
         box-shadow: 
@@ -55,7 +55,7 @@ css = f"""
         50% {{ box-shadow: 0 0 80px 30px #c084fc, 0 0 150px 60px #a855f7, inset 0 0 120px 20px rgba(168,85,247,0.7); }}
     }}
 
-    /* Koi - Light Blue (Healing Pond) */
+    /* Koi - Light Blue */
     #koi-ring {{
         border-color: #7dd3fc;
         box-shadow: 
@@ -70,7 +70,7 @@ css = f"""
         50% {{ box-shadow: 0 0 80px 25px #7dd3fc, 0 0 150px 55px #38bdf8, inset 0 0 120px 15px rgba(125,211,252,0.6); }}
     }}
 
-    /* Fox - Orange (Culinary Fox) */
+    /* Fox - Orange */
     #fox-ring {{
         border-color: #fb923c;
         box-shadow: 
@@ -89,17 +89,17 @@ css = f"""
 
 st.markdown(css, unsafe_allow_html=True)
 
-# Overlay with correct real links
+# Fixed positions + real links
 html_overlay = """
 <div style="position: relative; height: 100vh; width: 100vw; margin: 0; padding: 0;">
-    <!-- Wise Owl → Reading Companion -->
+    <!-- Owl (works already) -->
     <a href="https://readingcompanion.streamlit.app/" target="_blank" class="ring" id="owl-ring" style="top: 20%; left: 65%;"></a>
     
-    <!-- Compassionate Koi → Healing Pond -->
-    <a href="https://healingpond.streamlit.app/" target="_blank" class="ring" id="koi-ring" style="top: 46.5%; left: 46%;"></a>
+    <!-- Koi - now perfectly centered on the glowing pond -->
+    <a href="https://healingpond.streamlit.app/" target="_blank" class="ring" id="koi-ring" style="top: 55%; left: 50%;"></a>
     
-    <!-- Culinary Fox → Culinary Fox -->
-    <a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring" id="fox-ring" style="top: 60%; left: 64%;"></a>
+    <!-- Fox - now perfectly centered on the cooking fox -->
+    <a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring" id="fox-ring" style="top: 85%; left: 55%;"></a>
 </div>
 """
 
