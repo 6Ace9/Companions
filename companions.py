@@ -77,7 +77,7 @@ css = f"""
 
     /* Koi ring - Light Blue */
     #koi-ring {{
-        top: 48%;
+        top: 47%;
         left: 50%;
         transform: translate(-50%, -50%);
         border-color: #7dd3fc;
