@@ -99,19 +99,19 @@ st.markdown(css, unsafe_allow_html=True)
 st.markdown("""
 <div style="position: relative; height: 100vh; width: 100vw; margin: 0; padding: 0;">
     <button class="ring-button" id="owl-ring" 
-            style="top: 22%; left: 65%;"
+            style="top: 22%; left: 55%;"
             onclick="alert('You chose the wise Owl companion ✨🦉')">
-        Owl
+        
     </button>
     <button class="ring-button" id="koi-ring" 
             style="top: 58%; left: 50%;"
             onclick="alert('You chose the graceful Koi companion 🪷🐟')">
-        Koi
+        
     </button>
     <button class="ring-button" id="fox-ring" 
             style="top: 78%; left: 68%;"
             onclick="alert('You chose the clever Fox companion 🔥🦊')">
-        Fox
+        
     </button>
 </div>
 """, unsafe_allow_html=True)
