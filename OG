@@ -31,7 +31,7 @@ css = f"""
         flex-wrap: wrap;
     }}
 
-    /* Custom glowing ring button (pure HTML) */
+    /* Glowing ring - now empty (no text) */
     .ring-button {{
         width: 260px;
         height: 260px;
@@ -39,15 +39,13 @@ css = f"""
         background: transparent;
         border: 10px solid;
         cursor: pointer;
-        font-size: 36px;
-        font-weight: bold;
-        color: white;
-        text-shadow: 0 0 25px white;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: transform 0.4s ease;
         box-sizing: border-box;
+        text-decoration: none;  /* For <a> tags */
+        /* Removed font-size, color, text-shadow - no text visible */
     }}
 
     .ring-button:hover {{
@@ -103,11 +101,12 @@ css = f"""
 
 st.markdown(css, unsafe_allow_html=True)
 
-# Container with custom HTML ring buttons
-st.markdown("""
-<div class="ring-container">
-    <button class="ring-button" id="owl-ring" onclick="alert('You chose the wise Owl companion ✨')">Owl</button>
-    <button class="ring-button" id="koi-ring" onclick="alert('You chose the graceful Koi companion 🪷')">Koi</button>
-    <button class="ring-button" id="fox-ring" onclick="alert('You chose the clever Fox companion 🔥')">Fox</button>
-</div>
-""", unsafe_allow_html=True)
+# Empty glowing rings with links - no text, no alerts
+st.markdown(
+    '<div class="ring-container">'
+    '<a href="https://readingcompanion.streamlit.app/" target="_blank" class="ring-button" id="owl-ring"></a>'
+    '<a href="https://healingpond.streamlit.app/" target="_blank" class="ring-button" id="koi-ring"></a>'
+    '<a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring-button" id="fox-ring"></a>'
+    '</div>',
+    unsafe_allow_html=True
+)
