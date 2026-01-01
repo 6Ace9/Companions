@@ -52,8 +52,8 @@ css = f"""
 
     /* Owl ring - positioned over the flying owl (top-rightish) */
     #owl-ring {{
-        top: 17%;      /* Adjust vertically to center on owl */
-        left: 70%;     /* Adjust horizontally */
+        top: 17.5%;      /* Adjust vertically to center on owl */
+        left: 73%;     /* Adjust horizontally */
         transform: translate(-50%, -50%);
         border-color: #c084fc;
         box-shadow: 
