@@ -6,19 +6,19 @@ background_url = "https://raw.githubusercontent.com/6Ace9/Companions/main/Landsc
 
 css = f"""
 <style>
-    /* Full-screen background that FILLS the entire screen */
+    /* Full widescreen background - stretches to fill the entire screen */
     .stApp {{
         background: url('{background_url}') no-repeat center center fixed;
-        background-size: cover;        /* Fills screen completely, no gaps, no distortion */
-        background-color: black;       /* Fallback color */
+        background-size: cover;        /* Now fills the screen completely (widescreen style) */
     }}
     
-    /* Hide all Streamlit UI elements */
-    header, footer, .stApp > div:first-child {{ visibility: hidden; }}
-    .stApp {{ margin: 0; padding: 0; height: 100vh; }}
+    /* Remove all default Streamlit padding/margins and hide UI elements */
+    .stApp {{ margin: 0; padding: 0; }}
+    header, footer, .stDecoratedContent, .stApp > div {{ visibility: hidden !important; }}
+    section.main {{ padding: 0 !important; margin: 0 !important; }}
 </style>
 """
 st.markdown(css, unsafe_allow_html=True)
 
-# Completely empty content
+# Absolutely nothing else - pure image
 st.markdown("")
