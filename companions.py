@@ -100,7 +100,7 @@ st.markdown("""
             onclick="alert('You chose the wise Owl companion 🦉')">
     </button>
     <button class="ring-button" id="koi-ring" 
-            style="top: 45%; left: 45%;"
+            style="top: 42%; left: 47%;"
             onclick="alert('You chose the compassionate Koi companion 🐟')">
     </button>
     <button class="ring-button" id="fox-ring" 
