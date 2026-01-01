@@ -52,7 +52,7 @@ css = f"""
 
     /* Owl ring - Purple */
     #owl-ring {{
-        top: 28%;
+        top: 17.5%;
         left: 72%;
         transform: translate(-50%, -50%);
         border-color: #c084fc;
