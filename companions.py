@@ -70,7 +70,7 @@ css = f"""
 
     /* Koi ring - positioned over the pond/koi fish (center lower) */
     #koi-ring {{
-        top: 55%;      /* Lower middle to cover the pond area */
+        top: 35%;      /* Lower middle to cover the pond area */
         left: 50%;
         transform: translate(-50%, -50%);
         border-color: #7dd3fc;
