@@ -17,33 +17,30 @@ css = f"""
         overflow: hidden;
     }}
     
-    /* Hide all default Streamlit elements */
-    header, footer, .stApp > div:first-child {{ visibility: hidden; }}
+    /* Hide Streamlit defaults */
+    header, footer, #MainMenu {{ visibility: hidden; }}
     [data-testid="stSidebar"] {{ display: none; }}
 
-    /* Base ring button style - now empty */
-    .ring-button {{
+    /* Clickable glowing ring base style */
+    .ring {{
         width: 260px;
         height: 260px;
         border-radius: 50%;
         background: transparent;
         border: 10px solid;
-        cursor: pointer;
-        font-size: 0;  /* Hide any text */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.4s ease;
-        box-sizing: border-box;
+        display: block;
         position: absolute;
         transform: translate(-50%, -50%);
+        transition: transform 0.4s ease;
+        z-index: 10;
+        pointer-events: auto;
     }}
 
-    .ring-button:hover {{
+    .ring:hover {{
         transform: translate(-50%, -50%) scale(1.2);
     }}
 
-    /* Owl - Purple Nebula */
+    /* Owl - Purple (Reading Companion) */
     #owl-ring {{
         border-color: #c084fc;
         box-shadow: 
@@ -58,7 +55,7 @@ css = f"""
         50% {{ box-shadow: 0 0 80px 30px #c084fc, 0 0 150px 60px #a855f7, inset 0 0 120px 20px rgba(168,85,247,0.7); }}
     }}
 
-    /* Koi - Light Blue */
+    /* Koi - Light Blue (Healing Pond) */
     #koi-ring {{
         border-color: #7dd3fc;
         box-shadow: 
@@ -73,7 +70,7 @@ css = f"""
         50% {{ box-shadow: 0 0 80px 25px #7dd3fc, 0 0 150px 55px #38bdf8, inset 0 0 120px 15px rgba(125,211,252,0.6); }}
     }}
 
-    /* Fox - Red/Orange */
+    /* Fox - Orange (Culinary Fox) */
     #fox-ring {{
         border-color: #fb923c;
         box-shadow: 
@@ -92,20 +89,18 @@ css = f"""
 
 st.markdown(css, unsafe_allow_html=True)
 
-# Empty ring buttons - no text at all
-st.markdown("""
+# Overlay with correct real links
+html_overlay = """
 <div style="position: relative; height: 100vh; width: 100vw; margin: 0; padding: 0;">
-    <button class="ring-button" id="owl-ring" 
-            style="top: 20%; left: 65%;"
-            onclick="alert('You chose the wise Owl companion 🦉')">
-    </button>
-    <button class="ring-button" id="koi-ring" 
-            style="top: 46.5%; left: 46%;"
-            onclick="alert('You chose the compassionate Koi companion 🐟')">
-    </button>
-    <button class="ring-button" id="fox-ring" 
-            style="top: 60%; left: 64%;"
-            onclick="alert('You chose the culinary Fox companion 🦊')">
-    </button>
+    <!-- Wise Owl → Reading Companion -->
+    <a href="https://readingcompanion.streamlit.app/" target="_blank" class="ring" id="owl-ring" style="top: 20%; left: 65%;"></a>
+    
+    <!-- Compassionate Koi → Healing Pond -->
+    <a href="https://healingpond.streamlit.app/" target="_blank" class="ring" id="koi-ring" style="top: 46.5%; left: 46%;"></a>
+    
+    <!-- Culinary Fox → Culinary Fox -->
+    <a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring" id="fox-ring" style="top: 60%; left: 64%;"></a>
 </div>
-""", unsafe_allow_html=True)
+"""
+
+st.markdown(html_overlay, unsafe_allow_html=True)
