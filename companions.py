@@ -96,7 +96,7 @@ st.markdown(css, unsafe_allow_html=True)
 st.markdown("""
 <div style="position: relative; height: 100vh; width: 100vw; margin: 0; padding: 0;">
     <button class="ring-button" id="owl-ring" 
-            style="top: 22%; left: 50%;"
+            style="top: 22%; left: 65%;"
             onclick="alert('You chose the wise Owl companion 🦉')">
     </button>
     <button class="ring-button" id="koi-ring" 
