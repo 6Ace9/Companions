@@ -6,105 +6,119 @@ background_url = "https://raw.githubusercontent.com/6Ace9/Companions/main/Compan
 
 css = f"""
 <style>
-    /* Full-screen background - switched to cover to avoid distortion */
+    /* Original full-screen background - back to stretch as you had it */
     .stApp {{
         background: url('{background_url}') no-repeat center center fixed;
-        background-size: cover;
+        background-size: 100% 100%;
         background-color: black;
         height: 100vh;
         margin: 0;
         padding: 0;
     }}
     
-    /* Hide Streamlit UI elements */
-    header, footer {{ visibility: hidden; }}
+    /* Hide all default Streamlit elements */
+    header, footer, .stApp > div:first-child {{ visibility: hidden; }}
     [data-testid="stSidebar"] {{ display: none; }}
-    
-    /* Container for centering buttons */
-    .button-container {{
+    .stApp {{ margin: 0; padding: 0; }}
+
+    /* Center the three rings horizontally */
+    .ring-container {{
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 80px;
+        gap: 100px;
         height: 100vh;
         flex-wrap: wrap;
     }}
-    
-    /* Base ring button style */
-    .glow-button {{
-        width: 220px;
-        height: 220px;
+
+    /* Base glowing ring button */
+    .ring-button {{
+        width: 240px;
+        height: 240px;
         border-radius: 50%;
+        background: transparent;
         border: none;
         cursor: pointer;
-        font-size: 28px;
+        font-size: 32px;
         font-weight: bold;
         color: white;
-        text-shadow: 0 0 15px white;
-        position: relative;
+        text-shadow: 0 0 20px white;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
         transition: transform 0.3s ease;
     }}
-    
-    .glow-button:hover {{
-        transform: scale(1.1);
+
+    .ring-button:hover {{
+        transform: scale(1.15);
     }}
-    
+
     /* Owl - Purple Nebula */
-    #owl-btn {{
-        background: radial-gradient(circle, rgba(80,20,150,0.3) 0%, transparent 70%);
+    #owl-ring {{
         box-shadow: 
-            0 0 30px 10px #a855f7,
-            0 0 60px 20px #7e22ce,
-            inset 0 0 40px rgba(139,92,246,0.4);
+            0 0 40px 15px #a855f7,
+            0 0 80px 30px #7e22ce,
+            inset 0 0 60px 10px rgba(139, 92, 246, 0.4);
+        border: 8px solid #c084fc;
         animation: owlPulse 4s ease-in-out infinite;
     }}
-    
+
     @keyframes owlPulse {{
-        0%, 100% {{ box-shadow: 0 0 30px 10px #a855f7, 0 0 60px 20px #7e22ce, inset 0 0 40px rgba(139,92,246,0.4); }}
-        50% {{ box-shadow: 0 0 50px 20px #c084fc, 0 0 90px 35px #a855f7, inset 0 0 60px rgba(168,85,247,0.6); }}
+        0%, 100% {{ 
+            box-shadow: 0 0 40px 15px #a855f7, 0 0 80px 30px #7e22ce, inset 0 0 60px 10px rgba(139, 92, 246, 0.4);
+        }}
+        50% {{ 
+            box-shadow: 0 0 60px 25px #c084fc, 0 0 120px 50px #a855f7, inset 0 0 90px 15px rgba(168, 85, 247, 0.6);
+        }}
     }}
-    
+
     /* Koi - Light Blue */
-    #koi-btn {{
-        background: radial-gradient(circle, rgba(100,200,255,0.25) 0%, transparent 70%);
+    #koi-ring {{
         box-shadow: 
-            0 0 30px 8px #38bdf8,
-            0 0 70px 15px #0ea5e9,
-            inset 0 0 40px rgba(56,189,248,0.3);
+            0 0 40px 12px #38bdf8,
+            0 0 80px 25px #0ea5e9,
+            inset 0 0 60px 8px rgba(56, 189, 248, 0.3);
+        border: 8px solid #7dd3fc;
         animation: koiPulse 5s ease-in-out infinite;
     }}
-    
+
     @keyframes koiPulse {{
-        0%, 100% {{ box-shadow: 0 0 30px 8px #38bdf8, 0 0 70px 15px #0ea5e9, inset 0 0 40px rgba(56,189,248,0.3); }}
-        50% {{ box-shadow: 0 0 45px 15px #7dd3fc, 0 0 100px 30px #38bdf8, inset 0 0 60px rgba(125,211,252,0.5); }}
+        0%, 100% {{ 
+            box-shadow: 0 0 40px 12px #38bdf8, 0 0 80px 25px #0ea5e9, inset 0 0 60px 8px rgba(56, 189, 248, 0.3);
+        }}
+        50% {{ 
+            box-shadow: 0 0 60px 20px #7dd3fc, 0 0 120px 45px #38bdf8, inset 0 0 90px 12px rgba(125, 211, 252, 0.5);
+        }}
     }}
-    
+
     /* Fox - Red/Orange */
-    #fox-btn {{
-        background: radial-gradient(circle, rgba(255,100,50,0.3) 0%, transparent 70%);
+    #fox-ring {{
         box-shadow: 
-            0 0 30px 10px #f97316,
-            0 0 70px 20px #ea580c,
-            inset 0 0 40px rgba(251,146,60,0.4);
+            0 0 40px 15px #f97316,
+            0 0 80px 30px #ea580c,
+            inset 0 0 60px 10px rgba(251, 146, 60, 0.4);
+        border: 8px solid #fb923c;
         animation: foxPulse 3s ease-in-out infinite;
     }}
-    
+
     @keyframes foxPulse {{
-        0%, 100% {{ box-shadow: 0 0 30px 10px #f97316, 0 0 70px 20px #ea580c, inset 0 0 40px rgba(251,146,60,0.4); }}
-        50% {{ box-shadow: 0 0 55px 20px #fb923c, 0 0 100px 40px #f97316, inset 0 0 70px rgba(251,146,60,0.6); }}
+        0%, 100% {{ 
+            box-shadow: 0 0 40px 15px #f97316, 0 0 80px 30px #ea580c, inset 0 0 60px 10px rgba(251, 146, 60, 0.4);
+        }}
+        50% {{ 
+            box-shadow: 0 0 65px 25px #fb923c, 0 0 130px 55px #f97316, inset 0 0 90px 15px rgba(251, 146, 60, 0.7);
+        }}
     }}
 </style>
 """
 
 st.markdown(css, unsafe_allow_html=True)
 
-# Centered button container
-st.markdown('<div class="button-container">', unsafe_allow_html=True)
+# Container for rings
+st.markdown('<div class="ring-container">', unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns([1,1,1])
 
 with col1:
     if st.button("Owl", key="owl"):
@@ -120,24 +134,19 @@ with col3:
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Custom HTML/JS to apply the glowing styles (Streamlit buttons don't support direct id/class easily)
+# Apply custom ring styles via JavaScript
 st.markdown("""
 <script>
-    const owl = document.querySelector('[data-testid="stButton"]').querySelector('button[kind="primary"]:nth-of-type(1)');
-    const koi = document.querySelectorAll('[data-testid="stButton"]')[1].querySelector('button');
-    const fox = document.querySelectorAll('[data-testid="stButton"]')[2].querySelector('button');
-    
-    if (owl) {{
-        owl.classList.add('glow-button');
-        owl.id = 'owl-btn';
-    }}
-    if (koi) {{
-        koi.classList.add('glow-button');
-        koi.id = 'koi-btn';
-    }}
-    if (fox) {{
-        fox.classList.add('glow-button');
-        fox.id = 'fox-btn';
-    }}
+    const buttons = document.querySelectorAll('[data-testid="stButton"] button');
+    if (buttons.length >= 3) {
+        buttons[0].classList.add('ring-button');
+        buttons[0].id = 'owl-ring';
+        
+        buttons[1].classList.add('ring-button');
+        buttons[1].id = 'koi-ring';
+        
+        buttons[2].classList.add('ring-button');
+        buttons[2].id = 'fox-ring';
+    }
 </script>
 """, unsafe_allow_html=True)
