@@ -6,7 +6,7 @@ background_url = "https://raw.githubusercontent.com/6Ace9/Companions/main/Compan
 
 css = f"""
 <style>
-    /* Original full-screen stretched background */
+    /* Full-screen stretched background */
     .stApp {{
         background: url('{background_url}') no-repeat center center fixed;
         background-size: 100% 100%;
@@ -15,24 +15,23 @@ css = f"""
         margin: 0;
         padding: 0;
         overflow: hidden;
+        position: relative;  /* Needed for absolute children */
     }}
     
-    /* Hide all default Streamlit elements */
+    /* Hide default Streamlit elements */
     header, footer, .stApp > div:first-child {{ visibility: hidden; }}
     [data-testid="stSidebar"] {{ display: none; }}
 
-    /* Center the three rings */
+    /* Container for absolute-positioned rings */
     .ring-container {{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 120px;
+        position: relative;
+        width: 100%;
         height: 100vh;
-        flex-wrap: wrap;
     }}
 
-    /* Glowing ring - now empty (no text) */
+    /* Glowing ring button (empty, no text) */
     .ring-button {{
+        position: absolute;
         width: 260px;
         height: 260px;
         border-radius: 50%;
@@ -44,16 +43,18 @@ css = f"""
         justify-content: center;
         transition: transform 0.4s ease;
         box-sizing: border-box;
-        text-decoration: none;  /* For <a> tags */
-        /* Removed font-size, color, text-shadow - no text visible */
+        text-decoration: none;
     }}
 
     .ring-button:hover {{
         transform: scale(1.2);
     }}
 
-    /* Owl - Purple Nebula */
+    /* Owl ring - positioned over the flying owl (top-rightish) */
     #owl-ring {{
+        top: 15%;      /* Adjust vertically to center on owl */
+        left: 65%;     /* Adjust horizontally */
+        transform: translate(-50%, -50%);
         border-color: #c084fc;
         box-shadow: 
             0 0 50px 15px #a855f7,
@@ -67,8 +68,11 @@ css = f"""
         50% {{ box-shadow: 0 0 80px 30px #c084fc, 0 0 150px 60px #a855f7, inset 0 0 120px 20px rgba(168,85,247,0.7); }}
     }}
 
-    /* Koi - Light Blue */
+    /* Koi ring - positioned over the pond/koi fish (center lower) */
     #koi-ring {{
+        top: 55%;      /* Lower middle to cover the pond area */
+        left: 50%;
+        transform: translate(-50%, -50%);
         border-color: #7dd3fc;
         box-shadow: 
             0 0 50px 12px #38bdf8,
@@ -82,8 +86,11 @@ css = f"""
         50% {{ box-shadow: 0 0 80px 25px #7dd3fc, 0 0 150px 55px #38bdf8, inset 0 0 120px 15px rgba(125,211,252,0.6); }}
     }}
 
-    /* Fox - Red/Orange */
+    /* Fox ring - positioned over the cooking fox (bottom-left foreground) */
     #fox-ring {{
+        top: 80%;      /* Bottom area */
+        left: 25%;     /* Left side */
+        transform: translate(-50%, -50%);
         border-color: #fb923c;
         box-shadow: 
             0 0 50px 15px #f97316,
@@ -101,12 +108,12 @@ css = f"""
 
 st.markdown(css, unsafe_allow_html=True)
 
-# Empty glowing rings with links - no text, no alerts
+# Absolutely positioned glowing rings with links
 st.markdown(
     '<div class="ring-container">'
-    '<a href="https://readingcompanion.streamlit.app/" target="_blank" class="ring-button" id="owl-ring"></a>'
-    '<a href="https://healingpond.streamlit.app/" target="_blank" class="ring-button" id="koi-ring"></a>'
-    '<a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring-button" id="fox-ring"></a>'
+    '  <a href="https://readingcompanion.streamlit.app/" target="_blank" class="ring-button" id="owl-ring"></a>'
+    '  <a href="https://healingpond.streamlit.app/" target="_blank" class="ring-button" id="koi-ring"></a>'
+    '  <a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring-button" id="fox-ring"></a>'
     '</div>',
     unsafe_allow_html=True
 )
