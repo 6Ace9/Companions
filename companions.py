@@ -21,7 +21,7 @@ css = f"""
     header, footer, .stApp > div:first-child {{ visibility: hidden; }}
     [data-testid="stSidebar"] {{ display: none; }}
 
-    /* Center the three rings - original flex layout */
+    /* Center the three rings */
     .ring-container {{
         display: flex;
         justify-content: center;
@@ -31,7 +31,7 @@ css = f"""
         flex-wrap: wrap;
     }}
 
-    /* Exact same glowing ring style as original */
+    /* Glowing ring - now empty (no text) */
     .ring-button {{
         width: 260px;
         height: 260px;
@@ -39,16 +39,13 @@ css = f"""
         background: transparent;
         border: 10px solid;
         cursor: pointer;
-        font-size: 36px;
-        font-weight: bold;
-        color: white;
-        text-shadow: 0 0 25px white;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: transform 0.4s ease;
         box-sizing: border-box;
-        text-decoration: none;  /* Important for <a> tags */
+        text-decoration: none;  /* For <a> tags */
+        /* Removed font-size, color, text-shadow - no text visible */
     }}
 
     .ring-button:hover {{
@@ -104,12 +101,12 @@ css = f"""
 
 st.markdown(css, unsafe_allow_html=True)
 
-# Fixed HTML: <a> tags styled as buttons + single-line to prevent rendering bugs
+# Empty glowing rings with links - no text, no alerts
 st.markdown(
     '<div class="ring-container">'
-    '<a href="https://readingcompanion.streamlit.app/" target="_blank" class="ring-button" id="owl-ring">Owl</a>'
-    '<a href="https://healingpond.streamlit.app/" target="_blank" class="ring-button" id="koi-ring">Koi</a>'
-    '<a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring-button" id="fox-ring">Fox</a>'
+    '<a href="https://readingcompanion.streamlit.app/" target="_blank" class="ring-button" id="owl-ring"></a>'
+    '<a href="https://healingpond.streamlit.app/" target="_blank" class="ring-button" id="koi-ring"></a>'
+    '<a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring-button" id="fox-ring"></a>'
     '</div>',
     unsafe_allow_html=True
 )
