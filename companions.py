@@ -21,7 +21,7 @@ css = f"""
     header, footer, .stApp > div:first-child {{ visibility: hidden; }}
     [data-testid="stSidebar"] {{ display: none; }}
 
-    /* Base ring button style */
+    /* Base ring button style - now empty */
     .ring-button {{
         width: 260px;
         height: 260px;
@@ -29,10 +29,7 @@ css = f"""
         background: transparent;
         border: 10px solid;
         cursor: pointer;
-        font-size: 36px;
-        font-weight: bold;
-        color: white;
-        text-shadow: 0 0 25px white;
+        font-size: 0;  /* Hide any text */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -95,23 +92,20 @@ css = f"""
 
 st.markdown(css, unsafe_allow_html=True)
 
-# New absolute-positioned rings that align with the companions in the background
+# Empty ring buttons - no text at all
 st.markdown("""
 <div style="position: relative; height: 100vh; width: 100vw; margin: 0; padding: 0;">
     <button class="ring-button" id="owl-ring" 
             style="top: 22%; left: 50%;"
             onclick="alert('You chose the wise Owl companion 🦉')">
-        Owl
     </button>
     <button class="ring-button" id="koi-ring" 
             style="top: 58%; left: 50%;"
-            onclick="alert('You chose the compasssionate Koi companion 🐟')">
-        Koi
+            onclick="alert('You chose the compassionate Koi companion 🐟')">
     </button>
     <button class="ring-button" id="fox-ring" 
             style="top: 78%; left: 68%;"
             onclick="alert('You chose the culinary Fox companion 🦊')">
-        Fox
     </button>
 </div>
 """, unsafe_allow_html=True)
