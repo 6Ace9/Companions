@@ -6,7 +6,7 @@ background_url = "https://raw.githubusercontent.com/6Ace9/Companions/main/Compan
 
 css = f"""
 <style>
-    /* Original full-screen stretched background */
+    /* Full-screen stretched background */
     .stApp {{
         background: url('{background_url}') no-repeat center center fixed;
         background-size: 100% 100%;
@@ -21,17 +21,7 @@ css = f"""
     header, footer, .stApp > div:first-child {{ visibility: hidden; }}
     [data-testid="stSidebar"] {{ display: none; }}
 
-    /* Center the three rings */
-    .ring-container {{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 120px;
-        height: 100vh;
-        flex-wrap: wrap;
-    }}
-
-    /* Custom glowing ring button (pure HTML) */
+    /* Base ring button style */
     .ring-button {{
         width: 260px;
         height: 260px;
@@ -48,10 +38,12 @@ css = f"""
         justify-content: center;
         transition: transform 0.4s ease;
         box-sizing: border-box;
+        position: absolute;
+        transform: translate(-50%, -50%);
     }}
 
     .ring-button:hover {{
-        transform: scale(1.2);
+        transform: translate(-50%, -50%) scale(1.2);
     }}
 
     /* Owl - Purple Nebula */
@@ -103,11 +95,23 @@ css = f"""
 
 st.markdown(css, unsafe_allow_html=True)
 
-# Container with custom HTML ring buttons
+# New absolute-positioned rings that align with the companions in the background
 st.markdown("""
-<div class="ring-container">
-    <button class="ring-button" id="owl-ring" onclick="alert('You chose the wise Owl companion ✨')">Owl</button>
-    <button class="ring-button" id="koi-ring" onclick="alert('You chose the graceful Koi companion 🪷')">Koi</button>
-    <button class="ring-button" id="fox-ring" onclick="alert('You chose the clever Fox companion 🔥')">Fox</button>
+<div style="position: relative; height: 100vh; width: 100vw; margin: 0; padding: 0;">
+    <button class="ring-button" id="owl-ring" 
+            style="top: 22%; left: 50%;"
+            onclick="alert('You chose the wise Owl companion ✨🦉')">
+        Owl
+    </button>
+    <button class="ring-button" id="koi-ring" 
+            style="top: 58%; left: 50%;"
+            onclick="alert('You chose the graceful Koi companion 🪷🐟')">
+        Koi
+    </button>
+    <button class="ring-button" id="fox-ring" 
+            style="top: 78%; left: 68%;"
+            onclick="alert('You chose the clever Fox companion 🔥🦊')">
+        Fox
+    </button>
 </div>
 """, unsafe_allow_html=True)
