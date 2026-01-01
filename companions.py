@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Landscape", layout="wide")
+st.set_page_config(page_title="Companions", layout="wide")
 
 background_url = "https://raw.githubusercontent.com/6Ace9/Companions/main/Landscape.jpg"
 
