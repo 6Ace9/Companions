@@ -102,7 +102,7 @@ css = f"""
 
     /* Fox ring - Orange (already had strong hover) */
     #fox-ring {{
-        top: 66%;
+        top: 64%;
         left: 70%;
         transform: translate(-50%, -50%);
         border-color: #fb923c;
