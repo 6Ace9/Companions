@@ -88,8 +88,8 @@ css = f"""
 
     /* Fox ring - positioned over the cooking fox (bottom-left foreground) */
     #fox-ring {{
-        top: 80%;      /* Bottom area */
-        left: 25%;     /* Left side */
+        top: 70%;      /* Bottom area */
+        left: 65%;     /* Left side */
         transform: translate(-50%, -50%);
         border-color: #fb923c;
         box-shadow: 
