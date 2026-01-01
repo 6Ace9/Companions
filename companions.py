@@ -104,7 +104,7 @@ st.markdown("""
             onclick="alert('You chose the compassionate Koi companion 🐟')">
     </button>
     <button class="ring-button" id="fox-ring" 
-            style="top: 60%; left: 65%;"
+            style="top: 60%; left: 64%;"
             onclick="alert('You chose the culinary Fox companion 🦊')">
     </button>
 </div>
