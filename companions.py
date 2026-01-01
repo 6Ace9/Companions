@@ -21,13 +21,15 @@ css = f"""
     header, footer, .stApp > div:first-child {{ visibility: hidden; }}
     [data-testid="stSidebar"] {{ display: none; }}
 
-    /* Base ring style */
-    .ring {{
+    /* Base ring button style - now empty */
+    .ring-button {{
         width: 260px;
         height: 260px;
         border-radius: 50%;
         background: transparent;
         border: 10px solid;
+        cursor: pointer;
+        font-size: 0;  /* Hide any text */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -37,7 +39,7 @@ css = f"""
         transform: translate(-50%, -50%);
     }}
 
-    .ring:hover {{
+    .ring-button:hover {{
         transform: translate(-50%, -50%) scale(1.2);
     }}
 
@@ -90,19 +92,20 @@ css = f"""
 
 st.markdown(css, unsafe_allow_html=True)
 
-# Replace buttons with <a> links
+# Empty ring buttons - no text at all
 st.markdown("""
 <div style="position: relative; height: 100vh; width: 100vw; margin: 0; padding: 0;">
-    <!-- Owl Companion -->
-    <a href="https://readingcompanion.streamlit.app/" 
-       style="top: 20%; left: 65%;"></a>
-    
-    <!-- Koi Companion -->
-    <a href="https://healingpond.streamlit.app/" 
-       style="top: 46.5%; left: 46%;"></a>
-    
-    <!-- Fox Companion -->
-    <a href="https://culinaryfox.streamlit.app/ 
-       style="top: 60%; left: 64%;"></a>
+    <button class="ring-button" id="owl-ring" 
+            style="top: 20%; left: 65%;"
+            onclick="alert('You chose the wise Owl companion 🦉')">
+    </button>
+    <button class="ring-button" id="koi-ring" 
+            style="top: 46.5%; left: 46%;"
+            onclick="alert('You chose the compassionate Koi companion 🐟')">
+    </button>
+    <button class="ring-button" id="fox-ring" 
+            style="top: 60%; left: 64%;"
+            onclick="alert('You chose the culinary Fox companion 🦊')">
+    </button>
 </div>
 """, unsafe_allow_html=True)
