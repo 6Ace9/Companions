@@ -132,7 +132,7 @@ st.markdown(css, unsafe_allow_html=True)
 st.markdown(
     '<div class="ring-container">'
     '  <a href="https://readingcompanion.streamlit.app/" target="_blank" class="ring-button" id="owl-ring"></a>'
-    '  <a href="https://healingpond.streamlit.app/" target="_blank" class="ring-button" id="koi-ring"></a>'
+    '  <a href="https://wellnesspond.streamlit.app/" target="_blank" class="ring-button" id="koi-ring"></a>'
     '  <a href="https://culinaryfox.streamlit.app/" target="_blank" class="ring-button" id="fox-ring"></a>'
     '</div>',
     unsafe_allow_html=True
